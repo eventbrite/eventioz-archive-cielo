@@ -42,6 +42,15 @@ module Cielo
       make_request! message
     end
 
+    def cancel!(cielo_tid, valor = nil)
+      message = xml_builder("requisicao-cancelamento", :before) do |xml|
+        xml.tid "#{cielo_tid}"
+        xml.valor valor if valor
+      end
+
+      make_request! message
+    end
+
     private
     def analysis_parameters(parameters={})
       [:numero, :valor, :bandeira, :"url-retorno"].each do |parameter|
