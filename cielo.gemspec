@@ -46,7 +46,7 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<activesupport>, [">= 3.0.7"])
       s.add_runtime_dependency(%q<i18n>, [">= 0"])
-      s.add_runtime_dependency(%q<builder>, ["< 3.2", ">= 2.0.0"])
+      s.add_runtime_dependency(%q<builder>, [">= 2.0.0"])
       s.add_development_dependency(%q<shoulda>, [">= 0"])
       s.add_development_dependency(%q<bundler>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.8.3"])
@@ -55,7 +55,7 @@ Gem::Specification.new do |s|
     else
       s.add_dependency(%q<activesupport>, [">= 3.0.7"])
       s.add_dependency(%q<i18n>, [">= 0"])
-      s.add_dependency(%q<builder>, ["< 3.2", ">= 2.0.0"])
+      s.add_dependency(%q<builder>, [">= 2.0.0"])
       s.add_dependency(%q<shoulda>, [">= 0"])
       s.add_dependency(%q<bundler>, [">= 0"])
       s.add_dependency(%q<jeweler>, ["~> 1.8.3"])
@@ -65,7 +65,7 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<activesupport>, [">= 3.0.7"])
     s.add_dependency(%q<i18n>, [">= 0"])
-    s.add_dependency(%q<builder>, ["< 3.2", ">= 2.0.0"])
+    s.add_dependency(%q<builder>, [">= 2.0.0"])
     s.add_dependency(%q<shoulda>, [">= 0"])
     s.add_dependency(%q<bundler>, [">= 0"])
     s.add_dependency(%q<jeweler>, ["~> 1.8.3"])
