@@ -6,6 +6,7 @@ require "net/http"
 require "net/https"
 require "rexml/document"
 require "builder"
+require "i18n"
 [:connection, :transaction].each { |lib| require "cielo/#{lib}" }
 
 module Cielo
@@ -19,7 +20,7 @@ module Cielo
     BASE_URL = "qasecommerce.cielo.com.br"
     WS_PATH = "/servicos/ecommwsec.do"
   end
-  
+
   @@environment = :test
   mattr_accessor :environment
   @@numero_afiliacao = "1001734898"
