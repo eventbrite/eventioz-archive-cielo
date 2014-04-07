@@ -4,11 +4,12 @@ module Cielo
     def initialize
       @connection = Cielo::Connection.new
     end
+
     def create!(parameters={})
       analysis_parameters(parameters)
       message = xml_builder("requisicao-transacao") do |xml|
         xml.tag!("dados-pedido") do
-          [:numero, :valor, :moeda, :"data-hora", :idioma].each do |key|
+          [:numero, :valor, :moeda, :"data-hora", :idioma, :"soft-descriptor"].each do |key|
             xml.tag!(key.to_s, parameters[key].to_s)
           end
         end
@@ -56,6 +57,11 @@ module Cielo
       [:numero, :valor, :bandeira, :"url-retorno"].each do |parameter|
         raise Cielo::MissingArgumentError, "Required parameter #{parameter} not found" unless parameters[parameter]
       end
+
+      descriptor = parameters[:"soft-descriptor"]
+      # Only 13 characters with non-special chars
+      parameters[:"soft-descriptor"] = I18n.transliterate(descriptor[0..12], replacement: ' ', locale: :en) if descriptor
+
       parameters.merge!(:moeda => "986") unless parameters[:moeda]
       parameters.merge!(:"data-hora" => Time.now.strftime("%Y-%m-%dT%H:%M:%S")) unless parameters[:"data-hora"]
       parameters.merge!(:idioma => "PT") unless parameters[:idioma]
